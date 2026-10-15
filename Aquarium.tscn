@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bjj27b4ckpa1d" path="res://icon.svg" id="4_le2ow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_le2ow"]
-size = Vector2(62, 1193)
+size = Vector2(62, 1242.5)
 
 [node name="Aquarium" type="Node2D" unique_id=792907411]
 
@@ -15,7 +15,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=133562138]
-position = Vector2(1865, 582)
+position = Vector2(1865, 606.75)
 shape = SubResource("RectangleShape2D_le2ow")
 
 [node name="Icon" type="Sprite2D" parent="Area2D" unique_id=1724105838]
