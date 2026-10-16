@@ -12,12 +12,8 @@ config_version=5
 
 config/name="brave fish"
 run/main_scene="uid://dwj271ql8ulwq"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-collisionreact="*uid://pfbsfj26qls"
 
 [display]
 

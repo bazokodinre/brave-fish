@@ -116,7 +116,16 @@
 [ext_resource type="Texture2D" uid="uid://52y60v1ibag3" path="res://bs swim stop/BS Stop Pos0029.png" id="114_5uow0"]
 [ext_resource type="Texture2D" uid="uid://b20xdbqtb5ace" path="res://bs swim stop/BS Stop Pos0030.png" id="115_unn6q"]
 [ext_resource type="Texture2D" uid="uid://bp3lym13gsepc" path="res://bs swim stop/BS Stop Pos0031.png" id="116_u6ras"]
-[ext_resource type="Script" uid="uid://pfbsfj26qls" path="res://collisionreact.gd" id="117_vx84v"]
+[ext_resource type="Texture2D" uid="uid://chk86thk68dfe" path="res://bs turn/BS Idle Turn0001.png" id="117_ye321"]
+[ext_resource type="Texture2D" uid="uid://moplk6nxarv" path="res://bs turn/BS Idle Turn0002.png" id="118_ldb2r"]
+[ext_resource type="Texture2D" uid="uid://bbkq6c2mlnmd8" path="res://bs turn/BS Idle Turn0003.png" id="119_ef2ee"]
+[ext_resource type="Texture2D" uid="uid://sk3vumm6xsgw" path="res://bs turn/BS Idle Turn0004.png" id="120_rfvsm"]
+[ext_resource type="Texture2D" uid="uid://ck3npr2jl2nwe" path="res://bs turn/BS Idle Turn0005.png" id="121_4uef7"]
+[ext_resource type="Texture2D" uid="uid://uq7cd7sk04re" path="res://bs turn/BS Idle Turn0006.png" id="122_aq8bh"]
+[ext_resource type="Texture2D" uid="uid://i1sew1xwx40d" path="res://bs turn/BS Idle Turn0007.png" id="123_gkhgj"]
+[ext_resource type="Texture2D" uid="uid://nnkngi8nwabv" path="res://bs turn/BS Idle Turn0008.png" id="124_qvhnq"]
+[ext_resource type="Texture2D" uid="uid://cfxkcxox8yaju" path="res://bs turn/BS Idle Turn0009.png" id="125_0a4t8"]
+[ext_resource type="Texture2D" uid="uid://c46g7thh2tnmi" path="res://bs turn/BS Idle Turn0010.png" id="126_tdhy2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m3q5r"]
 animations = [{
@@ -265,7 +274,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("48_hhex4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 24.0
 }, {
@@ -342,7 +351,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("73_dti67")
 }],
-"loop": true,
+"loop": 1,
 "name": &"swim",
 "speed": 24.0
 }, {
@@ -383,7 +392,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("60_xeh24")
 }],
-"loop": true,
+"loop": 0,
 "name": &"swimstart",
 "speed": 24.0
 }, {
@@ -481,31 +490,67 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("116_u6ras")
 }],
-"loop": false,
+"loop": 0,
 "name": &"swimstop",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("117_ye321")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_ldb2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_ef2ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_rfvsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_4uef7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_aq8bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_gkhgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_qvhnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_0a4t8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_tdhy2")
+}],
+"loop": 0,
+"name": &"turn",
 "speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqapq"]
 size = Vector2(174, 130)
 
-[node name="fishbody" type="Area2D" unique_id=1945371512]
+[node name="fishbody" type="RigidBody2D" unique_id=1655726067]
 collision_layer = 2
 collision_mask = 2
+mass = 0.075
+gravity_scale = 0.0
 script = ExtResource("1_rer3j")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1598243713]
 sprite_frames = SubResource("SpriteFrames_m3q5r")
-animation = &"swimstop"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=330639292]
-position = Vector2(30, 33)
-shape = SubResource("RectangleShape2D_rqapq")
+animation = &"turn"
 
 [node name="BlueSubmariner" type="Node2D" parent="." unique_id=821733365]
 
-[node name="collision" type="Node2D" parent="BlueSubmariner" unique_id=711554810]
-script = ExtResource("117_vx84v")
+[node name="Area2D" type="Area2D" parent="." unique_id=17179536]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="collisionentered" from="BlueSubmariner/collision" to="BlueSubmariner" method="_on_collision_collisionentered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=330639292]
+position = Vector2(30, 33)
+shape = SubResource("RectangleShape2D_rqapq")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
