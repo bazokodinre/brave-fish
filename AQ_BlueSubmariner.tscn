@@ -536,32 +536,34 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqapq"]
 size = Vector2(124, 130)
 
-[node name="fishbody" type="RigidBody2D" unique_id=1655726067]
+[node name="BlueSubmariner" type="Node2D" unique_id=1318975195]
+
+[node name="fishbody" type="RigidBody2D" parent="." unique_id=1655726067]
 collision_layer = 2
 collision_mask = 2
 mass = 0.075
 gravity_scale = 0.0
 script = ExtResource("1_rer3j")
 
-[node name="base_anim" type="AnimatedSprite2D" parent="." unique_id=1598243713]
-position = Vector2(30, 39)
+[node name="base_anim" type="AnimatedSprite2D" parent="fishbody" unique_id=1598243713]
+position = Vector2(30, 48)
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_m3q5r")
 animation = &"swimstart"
 offset = Vector2(-30, -40)
 
-[node name="turn_anim" type="AnimatedSprite2D" parent="." unique_id=1530179008]
+[node name="turn_anim" type="AnimatedSprite2D" parent="fishbody" unique_id=1530179008]
 visible = false
-position = Vector2(25, -7)
+position = Vector2(25, 12.000001)
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_fqxyq")
 animation = &"turn"
 
-[node name="BlueSubmariner" type="Node2D" parent="." unique_id=821733365]
+[node name="Area2D" type="Area2D" parent="fishbody" unique_id=17179536]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=17179536]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=330639292]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fishbody/Area2D" unique_id=330639292]
 position = Vector2(30, 33)
 shape = SubResource("RectangleShape2D_rqapq")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="fishbody/Area2D" to="fishbody" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="fishbody/Area2D" to="fishbody" method="_on_area_2d_area_exited"]

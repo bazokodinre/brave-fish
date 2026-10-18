@@ -1,29 +1,35 @@
 [gd_scene format=3 uid="uid://dwj271ql8ulwq"]
 
+[ext_resource type="Texture2D" uid="uid://p38cyy6n8jv6" path="res://background.png" id="1_le2ow"]
 [ext_resource type="PackedScene" uid="uid://c0ju2c762v3l5" path="res://AQ_BlueSubmariner.tscn" id="1_v7oo7"]
 [ext_resource type="Script" uid="uid://cc22rs4onyqak" path="res://scalelabel.gd" id="3_wsypf"]
 [ext_resource type="Script" uid="uid://biaw70y0yalj4" path="res://label_2.gd" id="4_akjqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_le2ow"]
-size = Vector2(238.25, 1242.5)
+size = Vector2(301, 1242.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hf7dp"]
 size = Vector2(2036, 78)
 
 [node name="Aquarium" type="Node2D" unique_id=792907411]
 
+[node name="Background" type="Sprite2D" parent="." unique_id=24413077]
+position = Vector2(959.0001, 609)
+scale = Vector2(1.6626018, 1.6626017)
+texture = ExtResource("1_le2ow")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1398788245]
 position = Vector2(-464, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=133562138]
-position = Vector2(2280.875, 606.75)
+position = Vector2(2296.875, 606.75)
 shape = SubResource("RectangleShape2D_le2ow")
 
 [node name="Area2D" type="Area2D" parent="Area2D" unique_id=78098328]
 position = Vector2(-1296, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Area2D" unique_id=860652921]
-position = Vector2(1824.75, 606.75)
+position = Vector2(1851.5, 606.75)
 shape = SubResource("RectangleShape2D_le2ow")
 
 [node name="floor" type="Area2D" parent="Area2D" unique_id=233285202]
@@ -42,8 +48,7 @@ shape = SubResource("RectangleShape2D_hf7dp")
 position = Vector2(-1200, 0)
 
 [node name="BlueSubmariner" parent="fish" unique_id=821733365 instance=ExtResource("1_v7oo7")]
-position = Vector2(1697, 1034)
-collision_layer = 0
+position = Vector2(1697, 92)
 
 [node name="Label" type="Label" parent="." unique_id=1364188429]
 offset_right = 444.0
