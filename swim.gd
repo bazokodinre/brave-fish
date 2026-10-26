@@ -97,7 +97,7 @@ func swim():
 	else:
 		self.linear_velocity = Vector2.ZERO
 		swim()
-	
+
 func swim_stop():
 	bs_anim.play("swimstop")
 	self.linear_damp = 2.0

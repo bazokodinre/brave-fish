@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bswue5l8lpvte"]
+
+[ext_resource type="Script" uid="uid://bh0cuompxh1r8" path="res://housebuilding.gd" id="1_2yopf"]
+[ext_resource type="Texture2D" uid="uid://d2hkxn6jclqah" path="res://BS House Body.png" id="2_f1gjg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hf7dp"]
+size = Vector2(195, 149)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqxyq"]
+size = Vector2(453, 323)
+
+[node name="building" type="StaticBody2D" unique_id=1843910386]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_2yopf")
+
+[node name="buildingtexture" type="Sprite2D" parent="." unique_id=2073327561]
+position = Vector2(40, 30)
+texture = ExtResource("2_f1gjg")
+
+[node name="buildingarea" type="Area2D" parent="." unique_id=1897285929]
+collision_layer = 4
+collision_mask = 4
+
+[node name="col" type="CollisionShape2D" parent="buildingarea" unique_id=258432903]
+position = Vector2(32.5, 123.5)
+scale = Vector2(2.3200002, 1)
+shape = SubResource("RectangleShape2D_hf7dp")
+
+[node name="clickarea" type="CollisionShape2D" parent="." unique_id=1422699269]
+position = Vector2(32.5, 32.5)
+shape = SubResource("RectangleShape2D_fqxyq")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="area_entered" from="buildingarea" to="." method="_on_poarea_area_entered"]
+[connection signal="area_exited" from="buildingarea" to="." method="_on_poarea_area_exited"]

@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://p38cyy6n8jv6" path="res://background.png" id="1_le2ow"]
 [ext_resource type="PackedScene" uid="uid://c0ju2c762v3l5" path="res://AQ_BlueSubmariner.tscn" id="1_v7oo7"]
+[ext_resource type="Texture2D" uid="uid://b7kja5or0rial" path="res://placeholderfloor.png" id="2_akjqn"]
 [ext_resource type="Script" uid="uid://cc22rs4onyqak" path="res://scalelabel.gd" id="3_wsypf"]
 [ext_resource type="Script" uid="uid://biaw70y0yalj4" path="res://label_2.gd" id="4_akjqn"]
+[ext_resource type="Script" uid="uid://cbpts1i5axutm" path="res://buildbutton.gd" id="6_h1m4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_le2ow"]
 size = Vector2(301, 1242.5)
@@ -11,38 +13,53 @@ size = Vector2(301, 1242.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hf7dp"]
 size = Vector2(2036, 78)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqxyq"]
+size = Vector2(1940, 848)
+
 [node name="Aquarium" type="Node2D" unique_id=792907411]
 
-[node name="Background" type="Sprite2D" parent="." unique_id=24413077]
+[node name="background" type="Sprite2D" parent="." unique_id=24413077]
+z_index = -2
 position = Vector2(959.0001, 609)
 scale = Vector2(1.6626018, 1.6626017)
 texture = ExtResource("1_le2ow")
 
+[node name="ph_floor" type="Sprite2D" parent="." unique_id=1595527092]
+z_index = -2
+position = Vector2(964.50006, 1026)
+scale = Vector2(1.3281461, 1.382353)
+texture = ExtResource("2_akjqn")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1398788245]
+visible = false
 position = Vector2(-464, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=133562138]
-position = Vector2(2296.875, 606.75)
+position = Vector2(2264.875, 606.75)
 shape = SubResource("RectangleShape2D_le2ow")
+debug_color = Color(0.9345288, 2.1081269e-05, 0.64224666, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="Area2D" unique_id=78098328]
 position = Vector2(-1296, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Area2D" unique_id=860652921]
-position = Vector2(1851.5, 606.75)
+position = Vector2(1875.5, 606.75)
 shape = SubResource("RectangleShape2D_le2ow")
+debug_color = Color(0.9345288, 2.1081269e-05, 0.64224666, 0.41960785)
 
 [node name="floor" type="Area2D" parent="Area2D" unique_id=233285202]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/floor" unique_id=1195306654]
 position = Vector2(1398, 1185)
 shape = SubResource("RectangleShape2D_hf7dp")
+debug_color = Color(0.9345288, 2.1081269e-05, 0.64224666, 0.41960785)
 
 [node name="top" type="Area2D" parent="Area2D" unique_id=1676301560]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/top" unique_id=2102403795]
 position = Vector2(1398, 17)
 shape = SubResource("RectangleShape2D_hf7dp")
+debug_color = Color(0.9345288, 2.1081269e-05, 0.64224666, 0.41960785)
 
 [node name="fish" type="Node2D" parent="." unique_id=955114210]
 position = Vector2(-1200, 0)
@@ -62,5 +79,33 @@ offset_right = 444.0
 offset_bottom = 224.0
 theme_override_font_sizes/font_size = 60
 script = ExtResource("4_akjqn")
+
+[node name="buildings" type="Node2D" parent="." unique_id=1414918451]
+
+[node name="buildbutton" type="Button" parent="." unique_id=1398965181]
+offset_left = 1627.0
+offset_top = 970.0
+offset_right = 1859.0
+offset_bottom = 1178.0
+theme_override_font_sizes/font_size = 60
+text = "build"
+script = ExtResource("6_h1m4a")
+
+[node name="bgpostop" type="Area2D" parent="." unique_id=765148350]
+collision_layer = 4
+collision_mask = 0
+
+[node name="col" type="CollisionShape2D" parent="bgpostop" unique_id=1889937109]
+position = Vector2(960, 414)
+shape = SubResource("RectangleShape2D_fqxyq")
+
+[node name="zcontrol" type="ColorRect" parent="." unique_id=1739913518]
+visible = false
+offset_left = 946.0
+offset_top = 1000.0
+offset_right = 986.0
+offset_bottom = 1004.0
+
+[connection signal="pressed" from="buildbutton" to="buildbutton" method="_on_pressed"]
 
 [editable path="fish/BlueSubmariner"]
